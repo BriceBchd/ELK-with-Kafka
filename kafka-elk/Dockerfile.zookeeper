@@ -1,0 +1,21 @@
+FROM openjdk:11-slim
+
+RUN apt-get update && apt-get install -y wget
+
+# Install Kafka
+RUN wget https://dlcdn.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz && \
+    ls -l && \
+    tar -xzf kafka_2.13-3.4.0.tgz && \
+    ls -l && \
+    mv kafka_2.13-3.4.0 /usr/local/kafka && \
+    rm kafka_2.13-3.4.0.tgz
+
+ENV KAFKA_HOME=/usr/local/kafka
+
+WORKDIR $KAFKA_HOME
+
+# Expose Kafka port
+EXPOSE 9092
+
+# Start Zookeeper server
+CMD ["bin/zookeeper-server-start.sh", "config/zookeeper.properties"]
