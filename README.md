@@ -12,8 +12,8 @@ Dans ce fichier de configuration Docker Compose, vous pouvez voir que nous avons
 
 Ce répertoire contient des scripts pour générer des logs.
 Todos:
-- [ ] Reddit script
-    - [ ] Add a script to generate logs from the reddit API.
+- [x] Reddit script
+    - [x] Add a script to generate logs from the reddit API.
     - [ ] Update script to generate logs every random seconds.
     - [ ] Dockerize the reddit scripts.
     - [ ] Docker compose the reddit scripts.
