@@ -36,3 +36,8 @@ This script clean the log files older than 7 days.
 ```bash
 find /home/data/reddit/ -name 'reddit.*.log' -mtime +7 -delete
 ```
+
+This script clean all the log files.
+```bash
+find /home/data/reddit/ -name 'reddit.*.log' -delete
+```

@@ -35,14 +35,13 @@ reddit = praw.Reddit(
 )
 
 # Récupération des subreddits les plus populaires actuellement
-subreddits = reddit.subreddit("all").top(limit=10)
+subreddits = reddit.subreddit("all").search(query="elasticsearch")
 
 # Ecriture des subreddits dans le fichier de log
 for subreddit in subreddits:
     print(subreddit.title)
     logger.info(
         {
-            "@timestamp": datetime.utcnow().isoformat(),
             "message": subreddit.title,
             "event": {"dataset": "reddit", "module": "subreddits", "category": "info"},
         }
