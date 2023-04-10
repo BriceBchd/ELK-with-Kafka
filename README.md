@@ -17,8 +17,8 @@ Todos:
     - [x] Update script to generate logs every random seconds.
     - [x] Dockerize the reddit scripts.
     - [x] Docker compose the reddit scripts.
-- [ ] Fake ECS logs
-    - [ ] Add a script to generate fake apache logs.
-    - [ ] Update script to generate logs every random seconds.
-    - [ ] Dockerize the fake apache logs.
-    - [ ] Docker compose the fake apache logs.
+- [x] Fake ECS logs
+    - [x] Add a script to generate fake apache logs.
+    - [x] Update script to generate logs every random seconds.
+    - [x] Dockerize the fake apache logs. 
+    - [x] Docker compose the fake apache logs. 

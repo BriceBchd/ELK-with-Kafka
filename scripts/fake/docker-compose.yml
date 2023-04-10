@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  fake-ecs:
+    build: .
+    volumes:
+      - /home/data/fake-ecs:/app/logs

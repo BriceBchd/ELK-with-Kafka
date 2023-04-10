@@ -52,7 +52,7 @@ def generate_log():
 
 # Écrit un certain nombre de logs aléatoires dans un fichier
 def generate_logs(num_logs, file_path):
-    with open(file_path, "w") as f:
+    with open(file_path, "a") as f:
         for i in range(num_logs):
             log = generate_log()
             f.write(log + "\n")
@@ -63,7 +63,7 @@ def loop_generator():
     while True:
         try:
             num_logs = randint(1, 10)
-            generate_logs(num_logs, "./logs.txt")
+            generate_logs(num_logs, "./logs/fake-ecs.txt")
             sleep(randint(1, 60))
         except Exception as e:
             print(str(e))
@@ -74,7 +74,7 @@ def loop_generator():
 def main():
     choice = sys.argv[1]
     if choice == "one":
-        generate_logs(10, "/home/data/fake-ecs/logs.txt")
+        generate_logs(10, "./logs/fake-ecs.txt")
     elif choice == "loop":
         loop_generator()
 
