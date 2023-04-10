@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  reddit_scraper:
+    build: .
+    volumes:
+      - /home/data/reddit:/app/logs

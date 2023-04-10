@@ -14,10 +14,10 @@ Ce répertoire contient des scripts pour générer des logs.
 Todos:
 - [x] Reddit script
     - [x] Add a script to generate logs from the reddit API.
-    - [ ] Update script to generate logs every random seconds.
-    - [ ] Dockerize the reddit scripts.
-    - [ ] Docker compose the reddit scripts.
-- [ ] Fake apache logs
+    - [x] Update script to generate logs every random seconds.
+    - [x] Dockerize the reddit scripts.
+    - [x] Docker compose the reddit scripts.
+- [ ] Fake ECS logs
     - [ ] Add a script to generate fake apache logs.
     - [ ] Update script to generate logs every random seconds.
     - [ ] Dockerize the fake apache logs.
