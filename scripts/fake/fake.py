@@ -2,6 +2,9 @@ from faker import Faker
 import numpy as np
 import datetime
 import json
+import sys
+from random import randint
+from time import sleep
 
 fake = Faker()
 
@@ -55,5 +58,26 @@ def generate_logs(num_logs, file_path):
             f.write(log + "\n")
 
 
-# Exemple d'utilisation : génère 10 logs aléatoires dans le fichier "logs.txt"
-generate_logs(10, "./logs.txt")
+# Génère des logs aléatoires en boucle
+def loop_generator():
+    while True:
+        try:
+            num_logs = randint(1, 10)
+            generate_logs(num_logs, "./logs.txt")
+            sleep(randint(1, 60))
+        except Exception as e:
+            print(str(e))
+            break
+
+
+# Fonction principale
+def main():
+    choice = sys.argv[1]
+    if choice == "one":
+        generate_logs(10, "/home/data/fake-ecs/logs.txt")
+    elif choice == "loop":
+        loop_generator()
+
+
+if __name__ == "__main__":
+    main()
