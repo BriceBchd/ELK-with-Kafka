@@ -18,4 +18,7 @@ WORKDIR $KAFKA_HOME
 EXPOSE 9092
 
 # Start Kafka server
-CMD ["bin/kafka-server-start.sh", "config/server.properties"]
+RUN ["bin/zookeeper-server-start.sh", "config/zookeeper.properties"]
+
+RUN [ "bin/kafka-server-start.sh config/server.properties" ]
+
