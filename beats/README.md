@@ -12,3 +12,6 @@ docker pull docker.elastic.co/beats/filebeat:8.7.0-arm64
 ```
 
 ## Todos
+- [ ] Filebeat
+    - [ ] Learn & doc filebeat
+    - [ ] TODOS
