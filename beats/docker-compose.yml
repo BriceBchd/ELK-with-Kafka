@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  filebeat:
+    build: .
+    image: bricebchd/filebeat:0.1
+    container_name: filebeat
+    user: root
+    volumes:
+      - "/home/data/fake-ecs:/home/data/fake-ecs:ro"

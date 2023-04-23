@@ -12,6 +12,13 @@ docker pull docker.elastic.co/beats/filebeat:8.7.0-arm64
 ```
 
 ## Todos
-- [ ] Filebeat
-    - [ ] Learn & doc filebeat
-    - [ ] TODOS
+- [x] Filebeat
+    - [x] Learn & doc filebeat
+    - [x] TODOS
+    - [x] Filebeat working locally
+    - [x] Filebeat working on docker
+
+## How to run
+```bash
+docker compose up -d
+```
