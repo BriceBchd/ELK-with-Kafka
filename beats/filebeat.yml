@@ -1,5 +1,6 @@
 filebeat.inputs:
 - type: filestream
+  id: fake-ecs
   enabled: true
   paths: ["/home/data/fake-ecs/fake-ecs.txt"]
   enabled: true
@@ -7,7 +8,7 @@ filebeat.inputs:
     log_type: fake-ecs
 
 output.kafka:
-  hosts: ["192.168.1.100:9092"]
+  hosts: ["kafka:9092"]
   topic: "quickstart-events"
-  version: "2.0.0"
-  required_acks: 1
+
+logging.level: debug
