@@ -9,6 +9,6 @@ filebeat.inputs:
 
 output.kafka:
   hosts: ["kafka:9092"]
-  topic: "quickstart-events"
+  topic: "fake-ecs"
 
 logging.level: debug
