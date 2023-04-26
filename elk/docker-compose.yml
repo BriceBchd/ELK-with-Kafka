@@ -1,28 +1,12 @@
-version: '3.9'
-services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.2
-    container_name: elasticsearch
-    environment:
-      - discovery.type=single-node
-      - cluster.name=kibana-cluster
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
-    ports:
-      - "9200:9200"
-    networks:
-      - elk-net
-    volumes:
-      - elasticsearch_data:/usr/share/elasticsearch/data
+version: '2'
 
+services:
   logstash:
-    image: docker.elastic.co/logstash/logstash:8.6.2
+    image: docker.elastic.co/logstash/logstash:8.7.0
     container_name: logstash
     volumes:
-      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-    environment:
-      - XPACK_MONITORING_ENABLED=false
-      - XPACK_MANAGEMENT_ENABLED=false
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ./pipeline:/usr/share/logstash/pipeline
+      - ./logstash.yml:/usr/share/logstash/config/logstash.yml
     ports:
       - "5000:5000"
     depends_on:
@@ -30,22 +14,29 @@ services:
     networks:
       - elk-net
 
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.elasticsearch
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    networks:
+      - elk-net
+
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.6.2
+    image: docker.elastic.co/kibana/kibana:8.7.0
     container_name: kibana
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - "5601:5601"
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     depends_on:
       - elasticsearch
     networks:
       - elk-net
 
-volumes:
-  elasticsearch_data:
-
-
 networks:
   elk-net:
+    name: elk-net
     driver: bridge
