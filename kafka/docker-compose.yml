@@ -7,6 +7,9 @@ services:
       - "2181:2181"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - filebeat-kafka
+
   kafka:
     image: bitnami/kafka:3.4
     ports:
@@ -23,3 +26,10 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
     depends_on:
       - zookeeper
+    networks:
+      - filebeat-kafka
+
+networks:
+  filebeat-kafka:
+    name: filebeat-kafka
+    driver: bridge
