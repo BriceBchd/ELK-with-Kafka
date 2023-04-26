@@ -1,17 +1,43 @@
 # ELK-Docker
 
-Dans ce fichier de configuration Docker Compose, vous pouvez voir que nous avons défini quatre services différents :
+## Description
+This project is a POC to test the ELK stack with Kafka and Filebeat.
+The dataflow is the following:
+- RedditAPI/FakeECS  -> Kafka -> Filebeat -> Logstash -> Elasticsearch -> Kibana
 
-- zookeeper: Le service ZooKeeper est utilisé pour gérer la coordination des brokers Kafka.
-- kafka: Le service Kafka est responsable du stockage et de la diffusion des messages.
-- logstash: Le service Logstash est utilisé pour consommer les messages Kafka, les traiter et les envoyer à Elasticsearch.
-- elasticsearch: Le service Elasticsearch est utilisé pour stocker les données de Logstash.
+## Requirements
+- Docker
+- Docker compose
+- Internet 🤖
+- 4GB RAM
+
+## Usage
+### Reddit script
+```bash
+cd scripts/reddit
+docker-compose up -d
+```
+
+### Fake ECS script
+```bash
+cd scripts/fake-ecs
+docker-compose up -d
+```
+
+### Kafka
+```bash
+cd kafka
+docker-compose up -d
+```
+
+### Filebeat
+```bash
+cd filebeat
+docker-compose up -d
+```
 
 
-## Scripts
-
-Ce répertoire contient des scripts pour générer des logs.
-Todos:
+## Todos:
 - [x] Reddit script
     - [x] Add a script to generate logs from the reddit API.
     - [x] Update script to generate logs every random seconds.
@@ -21,4 +47,32 @@ Todos:
     - [x] Add a script to generate fake apache logs.
     - [x] Update script to generate logs every random seconds.
     - [x] Dockerize the fake apache logs. 
-    - [x] Docker compose the fake apache logs. 
+    - [x] Docker compose the fake apache logs.
+- [x] Kafka
+    - [x] Zookeeper-Kafka local
+    - [x] Zookeeper-Kafka docker compose
+    - [x] Zookeeper-Kafka docker compose config auto topics
+    - [x] Zookeeper-Kafka docker compose config auto partitions & replicas
+- [x] Beats
+    - [x] Filebeat local
+    - [x] Filebeat docker compose
+    - [x] Filebeat CasC 
+    - [x] Filebeat connected to kafka
+    - [x] Filebeat setup input fake-ecs
+- [ ] Logstash
+    - [ ] Logstash docker compose
+    - [ ] Logstash CasC
+    - [ ] Logstash input kafka
+    - [ ] Logstash output elasticsearch
+    - [ ] Logstash filter transform etc...
+- [ ] Elasticsearch
+    - [ ] Elasticsearch docker compose
+    - [ ] Elasticsearch CasC
+    - [ ] Elasticsearch index template
+    - [ ] Elasticsearch index lifecycle
+    - [ ] Elasticsearch index rollover
+- [ ] Kibana
+    - [ ] Kibana docker compose
+    - [ ] Kibana CasC
+    - [ ] Kibana index pattern
+    - [ ] Kibana dashboard
