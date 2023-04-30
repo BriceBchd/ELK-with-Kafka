@@ -13,6 +13,7 @@ services:
       - elasticsearch
     networks:
       - elk-net
+      - filebeat-kafka
 
   elasticsearch:
     build:
@@ -23,7 +24,6 @@ services:
       - "9200:9200"
     networks:
       - elk-net
-
   kibana:
     image: docker.elastic.co/kibana/kibana:8.7.0
     container_name: kibana
@@ -40,3 +40,6 @@ networks:
   elk-net:
     name: elk-net
     driver: bridge
+  filebeat-kafka:
+    name: filebeat-kafka
+    external: true

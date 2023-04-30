@@ -9,7 +9,6 @@ The dataflow is the following:
 - Docker
 - Docker compose
 - Internet 🤖
-- 4GB RAM
 
 ## Usage
 ### Reddit script
