@@ -2,3 +2,5 @@ cluster.name: elk-docker
 network.host: 0.0.0.0
 discovery.type: single-node
 xpack.security.enabled: false
+xpack.monitoring.collection.enabled: true
+xpack.monitoring.elasticsearch.collection.enabled: true
