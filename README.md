@@ -1,4 +1,4 @@
-# ELK-Docker
+# ELK with Kafka
 
 ## Description
 This project is a POC to test the ELK stack with Kafka and Filebeat.
